@@ -590,7 +590,85 @@ const BHOTE_KOSHI_NEPAL_BOOTSTRAP_RECIPE = BHOTE_KOSHI_NEPAL_APPEND_RECIPE
 
 const EVENT_RECIPES = [BHOTE_KOSHI_NEPAL_BOOTSTRAP_RECIPE].filter(Boolean);
 
+/**
+ * UNIS fork: Ports of LA / Long Beach → drayage corridor → the Buena Park
+ * building. Keyframes are camera positions; the last two frame the dock side.
+ */
+const UNIS_SCENE_RECIPES = [
+  {
+    id: 'unis-port-to-dock',
+    title: 'UNIS Buena Park: Port to Dock',
+    durationSec: 30,
+    style: 'surveillance',
+    ui: { hidePanels: true, hudMode: 'minimal', safeFrame: '16:9' },
+    layers: {
+      'unis-buena-park': true,
+      'unis-live-ops': true,
+      flights: false,
+      traffic: false,
+    },
+    post: {
+      bloom: 40,
+      sharpen: true,
+      detectionMode: 'OFF',
+    },
+    cameraPath: [
+      {
+        lat: 33.62,
+        lon: -118.24,
+        alt: 45000,
+        heading: 20,
+        pitch: -50,
+        roll: 0,
+        duration: 5,
+        hold: 1,
+      },
+      {
+        lat: 33.7,
+        lon: -118.22,
+        alt: 9000,
+        heading: 40,
+        pitch: -38,
+        roll: 0,
+        duration: 5,
+        hold: 1,
+      },
+      {
+        lat: 33.8,
+        lon: -118.12,
+        alt: 6000,
+        heading: 55,
+        pitch: -35,
+        roll: 0,
+        duration: 5,
+        hold: 1,
+      },
+      {
+        lat: 33.8551,
+        lon: -118.0303,
+        alt: 520,
+        heading: 25,
+        pitch: -32,
+        roll: 0,
+        duration: 5,
+        hold: 2,
+      },
+      {
+        lat: 33.8565,
+        lon: -118.0175,
+        alt: 600,
+        heading: -53,
+        pitch: -32,
+        roll: 0,
+        duration: 4,
+        hold: 0,
+      },
+    ],
+  },
+];
+
 const PUBLIC_SCENE_RECIPES = [
+  ...UNIS_SCENE_RECIPES,
   {
     id: 'flights-radar',
     title: 'Global Flights Radar',

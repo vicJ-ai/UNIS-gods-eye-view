@@ -25,6 +25,10 @@ import { createApplicationFirms } from './layers/firms.js';
 import { createApplicationEarthquakes } from './layers/earthquakes.js';
 import { createApplicationFirePerimeters } from './layers/perimeters.js';
 import { createApplicationCables } from './layers/submarineCables.js';
+import {
+  createApplicationUnisFacility,
+  createApplicationUnisOps,
+} from './layers/unis.js';
 import { createInfrastructureLayers } from '../data/infrastructure.js';
 import { localGeoJsonServices } from './localGeojsonServices.js';
 import { createBhoteKoshiEventLayer } from '../data/bhoteKoshiEvent.js';
@@ -63,6 +67,9 @@ const SOURCE_METHODS = Object.freeze({
  */
 export const LOCAL_ONLY_LAYER_METADATA = Object.freeze([
   Object.freeze({ id: 'local-adsb', disposition: 'local-only' }),
+  // UNIS fork layers: kept out of share links and the upstream token ledger.
+  Object.freeze({ id: 'unis-buena-park', disposition: 'local-only' }),
+  Object.freeze({ id: 'unis-live-ops', disposition: 'local-only' }),
 ]);
 
 /** Serialization metadata for every layer the application catalog constructs. */
@@ -131,6 +138,8 @@ export function createApplicationCatalog({
     });
     const catalog = createLayerCatalog(
       [
+        createApplicationUnisFacility({ surface }),
+        createApplicationUnisOps(),
         createBhoteKoshiEventLayer(),
         createBhoteKoshiLocatorLayer({
           boundaryResolver: nepalBoundaryResolver,

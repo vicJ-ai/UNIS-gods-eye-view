@@ -71,3 +71,21 @@ npm run check:boundaries && npm run build
 
 Upstream test edits, kept small: `src/app/constructCatalog.test.mjs` (layer count 29 → 31) and
 `src/scenes/scenePolicy.test.mjs` (adds the two UNIS ids to the test's registered-layer set).
+
+## Upstream base and touch points
+
+Built on upstream `e7707d9` (2026-09-28). Besides the new files above, these upstream files carry
+small UNIS edits:
+
+- `src/app/constructCatalog.js`: registers both layers and marks them `local-only`.
+- `src/app/controls.js`: startup fly-in.
+- `src/app/tools.js`: turns the UNIS layers on at boot.
+- `src/ui/layerPanel.js`: adds the **UNIS** group at the top of the layer panel.
+- `src/data/trackedReadout.js`: lets UNIS clicks open the shared readout card.
+- `server/providers/local.js`: mounts `/api/unis`.
+- `src/locations.js`, `src/scenes/recipes.js`: the preset and the scene.
+- `scripts/package-boundaries.json`: lists the UNIS modules in `application-components` and
+  `application-layer-construction`.
+
+The app pauses rendering while its tab is hidden (upstream behaviour). In an occluded or background
+window, the globe stays black and the panel shows stale ON/OFF until the tab is visible again.

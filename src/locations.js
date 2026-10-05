@@ -24,6 +24,62 @@ let arrivalGeneration = 0;
  *   buildingHeight — estimated height of landmark center above ground (meters)
  */
 export const CITY_POIS = {
+  // UNIS fork: Buena Park, the two port complexes, and the I-5/SR-91 corridor.
+  socal: {
+    name: 'SoCal · UNIS',
+    groundElevation: -10, // meters above WGS84 ellipsoid (Buena Park)
+    viewBounds: {
+      southwest: { lat: 33.7, lng: -118.3 },
+      northeast: { lat: 33.92, lng: -117.93 },
+    },
+    pois: [
+      {
+        name: 'UNIS Buena Park',
+        lat: 33.86191,
+        lon: -118.02609,
+        alt: 700,
+        pitch: -32,
+        heading: 25,
+        buildingHeight: 10,
+      },
+      {
+        name: 'Port of Long Beach',
+        lat: 33.7542,
+        lon: -118.2165,
+        alt: 4500,
+        pitch: -35,
+        heading: 200,
+        buildingHeight: 20,
+      },
+      {
+        name: 'Port of Los Angeles',
+        lat: 33.7361,
+        lon: -118.2626,
+        alt: 4500,
+        pitch: -35,
+        heading: 180,
+        buildingHeight: 20,
+      },
+      {
+        name: 'I-5 / SR-91 Interchange',
+        lat: 33.8579,
+        lon: -117.9812,
+        alt: 1500,
+        pitch: -40,
+        heading: 300,
+        buildingHeight: 5,
+      },
+      {
+        name: 'Fullerton Municipal Airport',
+        lat: 33.8718,
+        lon: -117.9797,
+        alt: 1500,
+        pitch: -30,
+        heading: 270,
+        buildingHeight: 10,
+      },
+    ],
+  },
   austin: {
     name: 'Austin',
     groundElevation: 150, // meters above WGS84 ellipsoid
